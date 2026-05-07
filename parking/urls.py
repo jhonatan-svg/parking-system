@@ -62,4 +62,24 @@ urlpatterns = [
         name='eliminar_espacio'
     ),
 
+    path('tarifas/', views.lista_tarifas, name='tarifas'),
+
+    path(
+        'tarifas/nuevo/',
+        views.crear_tarifa,
+        name='crear_tarifa'
+    ),
+
+    path(
+        'tarifas/editar/<int:id>/',
+        views.editar_tarifa,
+        name='editar_tarifa'
+    ),
+
+    path(
+        'tarifas/eliminar/<int:id>/',
+        views.eliminar_tarifa,
+        name='eliminar_tarifa'
+    ),
+
 ]

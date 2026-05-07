@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Tarifas</h1>
+
+<a href="/tarifas/nuevo/" class="btn">
+    Nueva Tarifa
+</a>
+
+<br><br>
+
+<table>
+
+<tr>
+    <th>Tipo Vehiculo</th>
+    <th>Precio Hora</th>
+    <th>Acciones</th>
+</tr>
+
+{% for tarifa in tarifas %}
+
+<tr>
+
+    <td>{{ tarifa.tipo_vehiculo }}</td>
+    <td>{{ tarifa.precio_hora }}</td>
+
+    <td>
+
+        <a href="/tarifas/editar/{{ tarifa.id }}/"
+           class="btn">
+           Editar
+        </a>
+
+        <a href="/tarifas/eliminar/{{ tarifa.id }}/"
+           class="btn btn-danger">
+           Eliminar
+        </a>
+
+    </td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% endblock %}

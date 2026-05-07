@@ -194,3 +194,67 @@ def eliminar_espacio(request, id):
     espacio.delete()
 
     return redirect('espacios')
+
+def lista_tarifas(request):
+
+    tarifas = Tarifa.objects.all()
+
+    return render(
+        request,
+        'parking/tarifas/lista.html',
+        {'tarifas': tarifas}
+    )
+
+
+def crear_tarifa(request):
+
+    if request.method == 'POST':
+
+        form = TarifaForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            return redirect('tarifas')
+
+    else:
+        form = TarifaForm()
+
+    return render(
+        request,
+        'parking/tarifas/form.html',
+        {'form': form}
+    )
+
+
+def editar_tarifa(request, id):
+
+    tarifa = get_object_or_404(Tarifa, id=id)
+
+    if request.method == 'POST':
+
+        form = TarifaForm(
+            request.POST,
+            instance=tarifa
+        )
+
+        if form.is_valid():
+            form.save()
+            return redirect('tarifas')
+
+    else:
+        form = TarifaForm(instance=tarifa)
+
+    return render(
+        request,
+        'parking/tarifas/form.html',
+        {'form': form}
+    )
+
+
+def eliminar_tarifa(request, id):
+
+    tarifa = get_object_or_404(Tarifa, id=id)
+
+    tarifa.delete()
+
+    return redirect('tarifas')
