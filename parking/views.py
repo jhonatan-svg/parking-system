@@ -129,3 +129,68 @@ def eliminar_vehiculo(request, id):
     vehiculo.delete()
 
     return redirect('vehiculos')
+
+
+def lista_espacios(request):
+
+    espacios = Espacio.objects.all()
+
+    return render(
+        request,
+        'parking/espacios/lista.html',
+        {'espacios': espacios}
+    )
+
+
+def crear_espacio(request):
+
+    if request.method == 'POST':
+
+        form = EspacioForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            return redirect('espacios')
+
+    else:
+        form = EspacioForm()
+
+    return render(
+        request,
+        'parking/espacios/form.html',
+        {'form': form}
+    )
+
+
+def editar_espacio(request, id):
+
+    espacio = get_object_or_404(Espacio, id=id)
+
+    if request.method == 'POST':
+
+        form = EspacioForm(
+            request.POST,
+            instance=espacio
+        )
+
+        if form.is_valid():
+            form.save()
+            return redirect('espacios')
+
+    else:
+        form = EspacioForm(instance=espacio)
+
+    return render(
+        request,
+        'parking/espacios/form.html',
+        {'form': form}
+    )
+
+
+def eliminar_espacio(request, id):
+
+    espacio = get_object_or_404(Espacio, id=id)
+
+    espacio.delete()
+
+    return redirect('espacios')

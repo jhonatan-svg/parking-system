@@ -19,6 +19,8 @@ urlpatterns = [
          views.eliminar_cliente,
          name='eliminar_cliente'),
 
+
+
     path('vehiculos/', views.lista_vehiculos, name='vehiculos'),
 
     path(
@@ -37,6 +39,27 @@ urlpatterns = [
         'vehiculos/eliminar/<int:id>/',
         views.eliminar_vehiculo,
         name='eliminar_vehiculo'
+    ),
+
+
+    path('espacios/', views.lista_espacios, name='espacios'),
+
+    path(
+        'espacios/nuevo/',
+        views.crear_espacio,
+        name='crear_espacio'
+    ),
+
+    path(
+        'espacios/editar/<int:id>/',
+        views.editar_espacio,
+        name='editar_espacio'
+    ),
+
+    path(
+        'espacios/eliminar/<int:id>/',
+        views.eliminar_espacio,
+        name='eliminar_espacio'
     ),
 
 ]

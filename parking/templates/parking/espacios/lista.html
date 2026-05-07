@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Espacios</h1>
+
+<a href="/espacios/nuevo/" class="btn">
+    Nuevo Espacio
+</a>
+
+<br><br>
+
+<table>
+
+<tr>
+    <th>Numero</th>
+    <th>Estado</th>
+    <th>Acciones</th>
+</tr>
+
+{% for espacio in espacios %}
+
+<tr>
+
+    <td>{{ espacio.numero }}</td>
+
+    <td>
+        {% if espacio.estado %}
+            Disponible
+        {% else %}
+            Ocupado
+        {% endif %}
+    </td>
+
+    <td>
+
+        <a href="/espacios/editar/{{ espacio.id }}/"
+           class="btn">
+           Editar
+        </a>
+
+        <a href="/espacios/eliminar/{{ espacio.id }}/"
+           class="btn btn-danger">
+           Eliminar
+        </a>
+
+    </td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% endblock %}
