@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Parking System</title>
+
+    <style>
+        body{
+            font-family: Arial;
+            margin:0;
+            background:#f4f4f4;
+        }
+
+        nav{
+            background:#222;
+            padding:15px;
+        }
+
+        nav a{
+            color:white;
+            text-decoration:none;
+            margin-right:20px;
+            font-weight:bold;
+        }
+
+        .container{
+            width:90%;
+            margin:auto;
+            margin-top:30px;
+            background:white;
+            padding:20px;
+            border-radius:10px;
+        }
+
+        table{
+            width:100%;
+            border-collapse: collapse;
+        }
+
+        table th, table td{
+            border:1px solid #ccc;
+            padding:10px;
+        }
+
+        .btn{
+            padding:8px 15px;
+            background:#007bff;
+            color:white;
+            text-decoration:none;
+            border-radius:5px;
+        }
+
+        .btn-danger{
+            background:red;
+        }
+
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="/">Inicio</a>
+    <a href="/clientes/">Clientes</a>
+    <a href="/vehiculos/">Vehiculos</a>
+    <a href="/espacios/">Espacios</a>
+    <a href="/tarifas/">Tarifas</a>
+    <a href="/cobros/">Cobros</a>
+</nav>
+
+<div class="container">
+    {% block content %}
+    {% endblock %}
+</div>
+
+</body>
+</html>
