@@ -258,3 +258,68 @@ def eliminar_tarifa(request, id):
     tarifa.delete()
 
     return redirect('tarifas')
+
+
+def lista_cobros(request):
+
+    cobros = Cobro.objects.all()
+
+    return render(
+        request,
+        'parking/cobros/lista.html',
+        {'cobros': cobros}
+    )
+
+
+def crear_cobro(request):
+
+    if request.method == 'POST':
+
+        form = CobroForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            return redirect('cobros')
+
+    else:
+        form = CobroForm()
+
+    return render(
+        request,
+        'parking/cobros/form.html',
+        {'form': form}
+    )
+
+
+def editar_cobro(request, id):
+
+    cobro = get_object_or_404(Cobro, id=id)
+
+    if request.method == 'POST':
+
+        form = CobroForm(
+            request.POST,
+            instance=cobro
+        )
+
+        if form.is_valid():
+            form.save()
+            return redirect('cobros')
+
+    else:
+        form = CobroForm(instance=cobro)
+
+    return render(
+        request,
+        'parking/cobros/form.html',
+        {'form': form}
+    )
+
+
+def eliminar_cobro(request, id):
+
+    cobro = get_object_or_404(Cobro, id=id)
+
+    cobro.delete()
+
+    return redirect('cobros')

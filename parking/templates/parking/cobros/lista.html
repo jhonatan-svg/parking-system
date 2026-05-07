@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Cobros</h1>
+
+<a href="/cobros/nuevo/" class="btn">
+    Nuevo Cobro
+</a>
+
+<br><br>
+
+<table>
+
+<tr>
+    <th>Vehiculo</th>
+    <th>Espacio</th>
+    <th>Tarifa</th>
+    <th>Total</th>
+    <th>Acciones</th>
+</tr>
+
+{% for cobro in cobros %}
+
+<tr>
+
+    <td>{{ cobro.vehiculo }}</td>
+    <td>{{ cobro.espacio }}</td>
+    <td>{{ cobro.tarifa }}</td>
+    <td>{{ cobro.total }}</td>
+
+    <td>
+
+        <a href="/cobros/editar/{{ cobro.id }}/"
+           class="btn">
+           Editar
+        </a>
+
+        <a href="/cobros/eliminar/{{ cobro.id }}/"
+           class="btn btn-danger">
+           Eliminar
+        </a>
+
+    </td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% endblock %}

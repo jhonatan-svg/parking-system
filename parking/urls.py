@@ -82,4 +82,25 @@ urlpatterns = [
         name='eliminar_tarifa'
     ),
 
+
+    path('cobros/', views.lista_cobros, name='cobros'),
+
+    path(
+        'cobros/nuevo/',
+        views.crear_cobro,
+        name='crear_cobro'
+    ),
+
+    path(
+        'cobros/editar/<int:id>/',
+        views.editar_cobro,
+        name='editar_cobro'
+    ),
+
+    path(
+        'cobros/eliminar/<int:id>/',
+        views.eliminar_cobro,
+        name='eliminar_cobro'
+    ),
+
 ]
